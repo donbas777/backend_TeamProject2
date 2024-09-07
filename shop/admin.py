@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import (
+    Embroidery,
+    Book,
+    EmbroideryImage,
+    BookImage,
+)
+
+admin.site.register(Embroidery)
+admin.site.register(Book)
+admin.site.register(EmbroideryImage)
+admin.site.register(BookImage)
