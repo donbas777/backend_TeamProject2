@@ -1,0 +1,6 @@
+venv
+.idea
+shopApi/__pycache__/
+shopApi/shopApi/__pycache__/
+**__pycache__
+db.sqlite3
