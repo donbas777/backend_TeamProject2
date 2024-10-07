@@ -5,6 +5,7 @@ from .models import (
     Embroidery,
     EmbroideryImage,
     BookImage,
+    Order
 )
 
 
@@ -87,4 +88,14 @@ class BookListSerializer(BookSerializer):
             "genre",
             "price",
             "image",
+        )
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = (
+            "phone_number",
+            "embroideries",
+            "books"
         )

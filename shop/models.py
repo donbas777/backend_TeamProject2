@@ -70,3 +70,9 @@ class Book(models.Model):
 class BookImage(models.Model):
     title = models.ForeignKey(Book, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to=books_image_file_path)
+
+
+class Order(models.Model):
+    phone_number = models.IntegerField()
+    embroideries = models.ManyToManyField(Embroidery)
+    books = models.ManyToManyField(Book)

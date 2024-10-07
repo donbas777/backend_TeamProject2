@@ -1,10 +1,10 @@
-from rest_framework import mixins, status, permissions
+from rest_framework import mixins, status, permissions, viewsets
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 
-from .models import Embroidery, Book
+from .models import Embroidery, Book, Order
 from .serializers import (
     EmbroiderySerializer,
     EmbroideryImageSerializer,
@@ -12,6 +12,7 @@ from .serializers import (
     BookSerializer,
     BookListSerializer,
     BookImageSerializer,
+    OrderSerializer
 )
 
 
@@ -96,7 +97,6 @@ class BookViewSet(
     permission_classes = ()
 
     def get_queryset(self):
-        """Retrieve the movies with filters"""
         title = self.request.query_params.get("title")
         description = self.request.query_params.get("description")
         genre = self.request.query_params.get("genre")
@@ -154,3 +154,7 @@ class BookViewSet(
             permission_classes = [permissions.IsAdminUser]
         return [permission() for permission in permission_classes]
 
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
